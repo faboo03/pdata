@@ -1,0 +1,4 @@
+geonaute_activity_test:
+    path:     /test.json
+    defaults: { _controller: GeonauteActivityBundle:Default:index }
+

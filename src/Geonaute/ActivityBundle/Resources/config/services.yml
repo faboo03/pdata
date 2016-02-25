@@ -1,0 +1,4 @@
+services:
+#    geonaute_activity.example:
+#        class: Geonaute\ActivityBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
