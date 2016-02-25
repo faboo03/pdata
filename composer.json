@@ -25,7 +25,9 @@
         "friendsofsymfony/http-cache-bundle": "^1.0",
         "willdurand/hateoas-bundle": "^1.0",
         "hautelook/templated-uri-bundle": "^2.0",
-        "willdurand/rest-extra-bundle": "^1.0"
+        "willdurand/rest-extra-bundle": "^1.0",
+        "geonaute/linkdata-bundle": "~1.0@dev",
+        "jms/serializer-bundle": "~0.13"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -48,6 +50,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stadline/linkdata-bundle.git"
+        }
+    ],
     "config": {
         "bin-dir": "bin"
     },

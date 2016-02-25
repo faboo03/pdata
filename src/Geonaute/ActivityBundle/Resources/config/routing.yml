@@ -2,3 +2,8 @@ geonaute_activity_test:
     path:     /test.json
     defaults: { _controller: GeonauteActivityBundle:Default:index }
 
+geonaute_activity_post:
+    path:     /activity.json
+    defaults: { _controller: GeonauteActivityBundle:Default:post }
+    methods: POST
+

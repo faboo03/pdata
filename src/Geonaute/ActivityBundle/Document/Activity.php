@@ -3,9 +3,12 @@
 namespace Geonaute\ActivityBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @MongoDB\Document
+ * @JMS\ExclusionPolicy("none")
  */
 class Activity
 {
@@ -16,21 +19,30 @@ class Activity
 
     /**
      * @MongoDB\String
+     * Assert\NotNull
+     * Assert\NotBlank
+     * @JMS\Type("string")
+     *
      */
     protected $activity_token;
 
     /**
      * @MongoDB\Date
+     * Assert\NotNull
+     * Assert\NotBlank
+     * @JMS\Type("DateTime<'Y-m-d'>")
      */
     protected $startdate;
 
     /**
-     * @MongoDB\Collection
+     * @MongoDB\Hash
+     * @JMS\Type("array")
      */
     protected $datasummaries = array();
 
     /**
-     * @MongoDB\Collection
+     * @MongoDB\Hash
+     * @JMS\Type("array")
      */
     protected $product_ids = array();
 

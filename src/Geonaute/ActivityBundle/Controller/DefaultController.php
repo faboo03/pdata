@@ -2,24 +2,41 @@
 
 namespace Geonaute\ActivityBundle\Controller;
 
+use FOS\RestBundle\Controller\FOSRestController;
 use Geonaute\ActivityBundle\Document\Activity;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Geonaute\ActivityBundle\Form\ActivityType;
+use JMS\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class DefaultController extends FOSRestController
 {
     public function indexAction()
     {
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $activity = $dm->getRepository('GeonauteActivityBundle:Activity') ->findOneBy(array('activity_token' => 'acitivytyioqyhdqs2'));
 
-        $activity = new Activity;
-        $activity->setActivityToken('acitivytyioqyhdqs');
-        $activity->setStartdate(new \DateTime('2016-01-01'));
-        $activity->setProductIds(array(
-            '12345', '123455'
-        ));
+        return $activity;
+    }
 
-        $activity->setDatasummaries(array(
-            '12' => 123, '11' => 1234
-        ));
+    public function postAction(Request $request)
+    {
+        $dm = $this->get('doctrine_mongodb')->getManager();
+
+        $serializer = $this->get('jms_serializer');
+
+        $form = $this->createForm(new ActivityType(), new Activity());
+        $form->submit(json_decode($request->getContent(), true));
+
+        if($form->isValid()) {
+            $dm->persist($form->getData());
+            $dm->flush();
+
+            return $form->getData();
+        } else {
+            var_dump($form->getData());
+            var_dump($form->getErrorsAsString());
+            die();
+        }
 
         return $activity;
     }
