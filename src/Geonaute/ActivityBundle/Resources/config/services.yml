@@ -1,6 +1,10 @@
 services:
     geonaute_activity.form.activity_type:
         class: Geonaute\ActivityBundle\Form\ActivityType
-        arguments: ['@guzzle.client.api_linkdata']
+        arguments: ['@geonaute_activity.linkdata.manager']
         tags:
            - { name: form.type }
+
+    geonaute_activity.linkdata.manager:
+        class: Geonaute\ActivityBundle\Manager\LinkdataDecorator
+        arguments: ['@guzzle.client.api_linkdata', '@logger']
