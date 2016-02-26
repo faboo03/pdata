@@ -24,7 +24,7 @@ class ActivityType extends AbstractType
     {
         $builder
             ->add('activity_token')
-            ->add('product_ids', 'choice', array('multiple' => true));
+            ->add('product_ids');
 
         $builder->addEventListener(FormEvents::POST_SUBMIT, function($event){
             $form = $event->getForm();
@@ -36,7 +36,10 @@ class ActivityType extends AbstractType
                 if($response->getStatusCode() == 200) {
                     $xml = simplexml_load_string($response->getBody());
                 }
+                //get date
                 $data->setStartdate(new \DateTime((string) $xml->ACTIVITY->STARTDATE));
+
+                // get datasummary
                 $datasummaries = array();
                 foreach($xml->ACTIVITY->DATASUMMARY as $node) {
                     $datasummaries[(string)$node->VALUE['id']] = (string)$node->VALUE;

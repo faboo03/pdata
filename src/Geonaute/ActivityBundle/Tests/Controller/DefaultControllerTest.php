@@ -27,23 +27,13 @@ class DefaultControllerTest extends WebTestCase
         $jsonData = json_encode($data);
         $crawler = $client->request('POST', '/activity.json', array(), array(), array(), $jsonData);
 
-        var_dump($client->getResponse()->getContent());
-        die();
-
         $this->assertTrue($client->getResponse()->getStatusCode() == 200, 'Request URL is OK');
 //        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
     }
 
-//    public function testList()
-//    {
-//        $client = static::createClient();
-//
-//        $crawler = $client->request('GET', '/stats/12345.json?start=2016-02-27');
-//
-//        var_dump($client->getResponse()->getContent());
-//        die();
-////        $crawler = $client->request('GET', '/stats/12345.json');
-//
-////        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
-//    }
+    public function testList()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/stats/12345.json?start=2016-02-27');
+    }
 }

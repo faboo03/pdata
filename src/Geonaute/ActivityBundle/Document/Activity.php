@@ -39,7 +39,7 @@ class Activity
     protected $datasummaries = array();
 
     /**
-     * @MongoDB\Collection
+     * @MongoDB\Hash
      * @JMS\Type("array")
      */
     protected $product_ids = array();
