@@ -26,9 +26,10 @@ class LinkdataDecorator
 
             // get datasummary
             $datasummaries = array();
-            foreach($xml->ACTIVITY->DATASUMMARY as $node) {
-                $datasummaries[(string)$node->VALUE['id']] = (string)$node->VALUE;
+            foreach($xml->ACTIVITY->DATASUMMARY->VALUE as $node) {
+                $datasummaries[(string)$node['id']] = (string)$node;
             }
+
             $returnArray['datasummaries'] = $datasummaries;
             $returnArray['ldid'] = (string) $xml->ACTIVITY->USERID;
         } catch (\Exception $e) {
