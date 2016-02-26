@@ -33,11 +33,16 @@ class DefaultController extends FOSRestController
 
             return $form->getData();
         } else {
-            var_dump($form->getData());
-            var_dump($form->getErrorsAsString());
-            die();
+            return $form->getErrors();
         }
+    }
 
-        return $activity;
+    public function productListAction(Request $request, $product_id)
+    {
+        $dm = $this->get('doctrine_mongodb')->getManager();
+
+        $activities = $dm->getRepository('GeonauteActivityBundle:Activity')->findAll();
+
+        return $activities;
     }
 }

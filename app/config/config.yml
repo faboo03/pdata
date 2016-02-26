@@ -115,3 +115,12 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+
+#geonaute_linkdata:
+#    base_url: %linkdata.base_url%
+#    plugins:
+#        cache: true
+#        auth: true
+#        language: true
+#    formatter:
+#        enabled: true

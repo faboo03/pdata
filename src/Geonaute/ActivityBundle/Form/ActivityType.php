@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class ActivityType extends AbstractType
 {
@@ -18,9 +19,10 @@ class ActivityType extends AbstractType
             ->add('activity_token')
             ->add('product_ids');
 
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function($event){
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function($event){
             $form = $event->getForm();
-            $data = $event->getData();
+            $data = $form->getData();
+            $data->setStartdate(new \DateTime());
         });
     }
 

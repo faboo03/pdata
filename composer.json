@@ -4,7 +4,9 @@
     "type": "project",
     "description": "The \"Symfony REST Edition\" distribution",
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": {
+            "": "src/"
+        }
     },
     "require": {
         "php": ">=5.4.0",
@@ -25,12 +27,11 @@
         "friendsofsymfony/http-cache-bundle": "^1.0",
         "willdurand/hateoas-bundle": "^1.0",
         "hautelook/templated-uri-bundle": "^2.0",
-        "willdurand/rest-extra-bundle": "^1.0",
-        "geonaute/linkdata-bundle": "~1.0@dev",
-        "jms/serializer-bundle": "~0.13"
+        "willdurand/rest-extra-bundle": "^1.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "scripts": {
         "post-install-cmd": [

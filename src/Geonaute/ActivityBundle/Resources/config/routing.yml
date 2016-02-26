@@ -7,3 +7,8 @@ geonaute_activity_post:
     defaults: { _controller: GeonauteActivityBundle:Default:post }
     methods: POST
 
+geonaute_activity_list:
+    path:     /stats/{product_id}.json
+    defaults: { _controller: GeonauteActivityBundle:Default:productList }
+    methods: GET
+

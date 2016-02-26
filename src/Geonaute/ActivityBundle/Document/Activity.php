@@ -19,8 +19,8 @@ class Activity
 
     /**
      * @MongoDB\String
-     * Assert\NotNull
-     * Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\NotBlank
      * @JMS\Type("string")
      *
      */
@@ -28,8 +28,6 @@ class Activity
 
     /**
      * @MongoDB\Date
-     * Assert\NotNull
-     * Assert\NotBlank
      * @JMS\Type("DateTime<'Y-m-d'>")
      */
     protected $startdate;
