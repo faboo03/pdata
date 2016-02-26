@@ -25,7 +25,7 @@ class LinkdataDecorator
             $returnArray['sport_id'] = (string) $xml->ACTIVITY->SPORTID;
 
             // get datasummary
-            $datasummaries = array("5" => 0, "24" => 0);
+            $datasummaries = array("5" => "0", "24" => "0");
             foreach($xml->ACTIVITY->DATASUMMARY->VALUE as $node) {
                 $datasummaries[(string)$node['id']] = (string)$node;
             }

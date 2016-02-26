@@ -122,6 +122,8 @@ guzzle:
 
             options:
                 timeout: 30
+        api_pdata:
+            base_url: "http://dev.mygeonaute.com"
 
 #geonaute_linkdata:
 #    base_url: %linkdata.base_url%
