@@ -21420,6 +21420,10 @@ class LoadActivityData implements FixtureInterface, ContainerAwareInterface {
 
             $activityData = $decorator->getActivityData($row['token']);
 
+            if(!$activityData) {
+                continue;
+            }
+
             $activity->setStartdate($activityData['startdate']);
             $activity->setDatasummaries($activityData['datasummaries']);
             $activity->setSportId($activityData['sport_id']);
@@ -21429,6 +21433,7 @@ class LoadActivityData implements FixtureInterface, ContainerAwareInterface {
 
             $activity->setProductIds($this->getProducts($activityData['sport_id']));
 
+            sleep(1);
             $manager->persist($activity);
         }
         $manager->flush();

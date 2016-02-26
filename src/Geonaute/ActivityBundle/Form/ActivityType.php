@@ -38,6 +38,12 @@ class ActivityType extends AbstractType
             $activityToken = $form->getData()->getActivityToken();
             $activityData = $this->linkdataDecorator->getActivityData($activityToken);
 
+            // if error not return 500
+            if(!$activityData) {
+                $data->setStartdate(new \DateTime());
+                return;
+            }
+
             $data->setStartdate($activityData['startdate']);
             $data->setDatasummaries($activityData['datasummaries']);
             $data->setSportId($activityData['sport_id']);

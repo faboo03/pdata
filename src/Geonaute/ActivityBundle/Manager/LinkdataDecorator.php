@@ -35,6 +35,7 @@ class LinkdataDecorator
             if($this->logger) {
                 $this->logger->alert('Error FullActivity : '.$e->getMessage());
             }
+            return false;
         }
 
         $this->logger->info('ActivityIsOk : '.print_r($returnArray, true));
@@ -63,6 +64,7 @@ class LinkdataDecorator
             if($this->logger) {
                 $this->logger->alert('Error Activity : '.$e->getMessage());
             }
+            return false;
         }
 
         $this->logger->info('UserIsOk : '.print_r($user, true));
