@@ -34,6 +34,8 @@ class DefaultControllerTest extends WebTestCase
     public function testList()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/stats/12345.json?start=2016-02-27');
+        $crawler = $client->request('GET', '/stats/12345.json?start=2012-01-01&end=2013-01-01');
+        $this->assertTrue($client->getResponse()->getStatusCode() == 200, 'Request URL is OK');
     }
+
 }
