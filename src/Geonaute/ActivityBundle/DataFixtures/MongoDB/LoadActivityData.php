@@ -21,7 +21,7 @@ class LoadActivityData implements FixtureInterface, ContainerAwareInterface {
     }
 
     private function getTokens() {
-        array(
+        return array(
             array('token' => 'f7a68277214cdc2fa8e8'),
             array('token' => 'd3c095232a39e44b65f6'),
             array('token' => '428383536adf05b5e89c'),
