@@ -1,3 +1,6 @@
 services:
     geonaute_activity.form.activity_type:
         class: Geonaute\ActivityBundle\Form\ActivityType
+        arguments: ['@guzzle.client.api_linkdata']
+        tags:
+           - { name: form.type }

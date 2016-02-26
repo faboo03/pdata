@@ -115,6 +115,13 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+guzzle:
+    clients:
+        api_linkdata:
+            base_url: "%linkdata.base_url%"
+
+            options:
+                timeout: 30
 
 #geonaute_linkdata:
 #    base_url: %linkdata.base_url%

@@ -23,9 +23,7 @@ class DefaultController extends FOSRestController
     {
         $dm = $this->get('doctrine_mongodb')->getManager();
 
-        $serializer = $this->get('jms_serializer');
-
-        $form = $this->createForm(new ActivityType(), new Activity());
+        $form = $this->createForm(ActivityType::class, new Activity());
         $form->submit(json_decode($request->getContent(), true));
 
         if($form->isValid()) {

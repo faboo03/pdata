@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Geonaute\ActivityBundle\GeonauteActivityBundle(),
 //            new Geonaute\LinkdataBundle\GeonauteLinkdataBundle(),
+            new EightPoints\Bundle\GuzzleBundle\GuzzleBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

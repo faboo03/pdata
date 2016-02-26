@@ -10,6 +10,13 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class ActivityType extends AbstractType
 {
+
+    private $linkdata;
+    public function __construct($linkdata)
+    {
+        $this->linkdata = $linkdata;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -17,12 +24,27 @@ class ActivityType extends AbstractType
     {
         $builder
             ->add('activity_token')
-            ->add('product_ids');
+            ->add('product_ids', 'choice', array('multiple' => true));
 
         $builder->addEventListener(FormEvents::POST_SUBMIT, function($event){
             $form = $event->getForm();
             $data = $form->getData();
-            $data->setStartdate(new \DateTime());
+
+            $activityToken = $form->getData()->getActivityToken();
+            try{
+                $response = $this->linkdata->get("/activity/$activityToken/fullactivity.xml");
+                if($response->getStatusCode() == 200) {
+                    $xml = simplexml_load_string($response->getBody());
+                }
+                $data->setStartdate(new \DateTime((string) $xml->ACTIVITY->STARTDATE));
+                $datasummaries = array();
+                foreach($xml->ACTIVITY->DATASUMMARY as $node) {
+                    $datasummaries[(string)$node->VALUE['id']] = (string)$node->VALUE;
+                }
+                $data->setDatasummaries($datasummaries);
+            } catch (\Exception $e) {
+//                $this->logger = ;
+            }
         });
     }
 
