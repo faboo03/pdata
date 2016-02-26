@@ -40,6 +40,7 @@ class ActivityType extends AbstractType
 
             $data->setStartdate($activityData['startdate']);
             $data->setDatasummaries($activityData['datasummaries']);
+            $data->setSportId($activityData['sport_id']);
 
             $user = $this->linkdataDecorator->getUserData($activityData['ldid']);
             $data->setUser($user);

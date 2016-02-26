@@ -22,6 +22,7 @@ class LinkdataDecorator
                 $xml = simplexml_load_string($response->getBody());
             }
             $returnArray['startdate'] = new \DateTime((string) $xml->ACTIVITY->STARTDATE);
+            $returnArray['sport_id'] = (string) $xml->ACTIVITY->SPORTID;
 
             // get datasummary
             $datasummaries = array();

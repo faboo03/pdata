@@ -33,6 +33,12 @@ class Activity
     protected $startdate;
 
     /**
+     * @MongoDB\String
+     * @JMS\Type("string")
+     */
+    protected $sport_id;
+
+    /**
      * @MongoDB\Hash
      * @JMS\Type("array")
      */
@@ -163,4 +169,22 @@ class Activity
     {
         return $this->user;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSportId()
+    {
+        return $this->sport_id;
+    }
+
+    /**
+     * @param mixed $sport_id
+     */
+    public function setSportId($sport_id)
+    {
+        $this->sport_id = $sport_id;
+        return $this;
+    }
+
 }
