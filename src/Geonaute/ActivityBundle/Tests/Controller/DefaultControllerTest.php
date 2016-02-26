@@ -38,8 +38,7 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $data = array('activity_token' => 'testActivity', 'product_ids' => array('0987654321' ,'1098765432'));
-        $crawler = $client->request('GET', '/stats/123.json');
+        $crawler = $client->request('GET', '/stats/12345.json?start=2016-02-27');
 
         var_dump($client->getResponse()->getContent());
         die();

@@ -2,6 +2,7 @@
 
 namespace Geonaute\ActivityBundle\Controller;
 
+use Doctrine\ODM\MongoDB\DocumentManager;
 use FOS\RestBundle\Controller\FOSRestController;
 use Geonaute\ActivityBundle\Document\Activity;
 use Geonaute\ActivityBundle\Form\ActivityType;
@@ -39,9 +40,29 @@ class DefaultController extends FOSRestController
 
     public function productListAction(Request $request, $product_id)
     {
+        /** @var DocumentManager */
         $dm = $this->get('doctrine_mongodb')->getManager();
 
-        $activities = $dm->getRepository('GeonauteActivityBundle:Activity')->findAll();
+        $qb = $dm->createQueryBuilder('GeonauteActivityBundle:Activity');
+        $qb->where( 'function() {
+                    for(var i =0; i < this.product_ids.length; i++) {
+                        if ( this.product_ids[i] == '.$product_id.' ) {
+                            return true;
+                        }
+                    }
+                    return false;
+             }');
+
+//        if($request->get('start')) {
+//            $qb->field('startdate')->gte($request->get('start'));
+//        }
+//        if($request->get('end')) {
+//            $qb->field('startdate')->lte($request->get('end'));
+//        }
+
+        $activities = $qb->getQuery()
+            ->execute()
+            ->toArray();
 
         return $activities;
     }
