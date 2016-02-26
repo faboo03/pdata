@@ -51,13 +51,6 @@ class DefaultController extends FOSRestController
                     return false;
              }');
 
-//        if($request->get('start')) {
-//            $qb->field('startdate')->gte($request->get('start'));
-//        }
-//        if($request->get('end')) {
-//            $qb->field('startdate')->lte($request->get('end'));
-//        }
-
         $activities = array_values($qb->getQuery()
             ->execute()
             ->toArray());

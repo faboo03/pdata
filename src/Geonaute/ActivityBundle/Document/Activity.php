@@ -45,6 +45,12 @@ class Activity
     protected $product_ids = array();
 
     /**
+     * @MongoDB\Hash
+     * @JMS\Type("array")
+     */
+    protected $user = array();
+
+    /**
      * Get id
      *
      * @return id $id
@@ -140,5 +146,21 @@ class Activity
     public function getProductIds()
     {
         return $this->product_ids;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get productIds
+     *
+     * @return collection $productIds
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
