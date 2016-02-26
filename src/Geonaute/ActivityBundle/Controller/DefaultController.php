@@ -42,14 +42,14 @@ class DefaultController extends FOSRestController
         $dm = $this->get('doctrine_mongodb')->getManager();
 
         $qb = $dm->createQueryBuilder('GeonauteActivityBundle:Activity');
-        $qb->where( 'function() {
-                    for(var i =0; i < this.product_ids.length; i++) {
-                        if ( this.product_ids[i] == '.$product_id.' ) {
-                            return true;
-                        }
-                    }
-                    return false;
-             }');
+//        $qb->where( 'function() {
+//                    for(var i =0; i < this.product_ids.length; i++) {
+//                        if ( this.product_ids[i] == '.$product_id.' ) {
+//                            return true;
+//                        }
+//                    }
+//                    return false;
+//             }');
 
         $activities = array_values($qb->getQuery()
             ->execute()
