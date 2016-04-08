@@ -2861,9 +2861,9 @@ class ImportActivitiesCommand extends ContainerAwareCommand
 
     private function getProducts($sportId) {
         if($sportId == 121) {
-            $base = array('8311901', '8341670');
+            $base = array('8340699', '8351180');
         } else {
-            $base = array('8311901', '8341670', '8245409', '8307664');
+            $base = array('8340699', '8340697', '8284495', '8284494');
         }
 
         return array($base[rand(0,count($base)-1)]);
